@@ -5,11 +5,11 @@ import Footer from '@/components/ui/Footer';
 import { Toaster } from 'react-hot-toast';
 import { Analytics } from '@vercel/analytics/react';
 
-let title = 'notesGPT - Take notes with your voice';
-let description = 'Generate action items from your notes in seconds';
-let url = 'https://usenotesgpt.com';
-let ogimage = 'https://usenotesgpt.com/images/og-image.png';
-let sitename = 'usenotesgpt.com';
+let title = 'Vet Notes GPT - Haz tus informes veterinarios hablando';
+let description = 'Convierte tus notas de voz en informes veterinarios y tareas de seguimiento usando AI';
+let url = 'https://notes.barkibu.com/';
+let ogimage = '';
+let sitename = 'notes.barkibu.com';
 
 export const metadata: Metadata = {
   metadataBase: new URL(url),

@@ -28,10 +28,10 @@ const NoteSchema = z.object({
   title: z
     .string()
     .describe('Short descriptive title in spanish of what the voice message is about'),
-  summary: z
+  vetReport: z
     .string()
     .describe(
-      'Detailed standard veterinary report that can be provided to a pet insurance company. In spanish.',
+      'Detailed standard veterinary report that can be provided to a pet insurance company. In spanish. Don´t summarize nor omit any relevant information.',
     ),
   actionItems: z
     .array(z.string())
@@ -54,29 +54,29 @@ export const chat = internalAction({
           {
             role: 'system',
             content:
-              'The following is a transcript of a voice message from a pet health related conversation. The message was created by an expert Veterinarian. Extract in spanish a title, summary (the summary must follow an standard veterinary report that can be provided to a pet insurance company), and action items from it and answer in JSON in this format: {title: string, summary: string, actionItems: [string, string, ...]}',
+              'The following is a transcript of a voice message from a pet health related conversation. The message was created by an expert Veterinarian. Extract in spanish a title, report (the report must follow an standard veterinary report that can be provided to a pet insurance company), and action items from it and answer in JSON in this format: {title: string, vetReport: string, actionItems: [string, string, ...]}',
           },
           { role: 'user', content: transcript },
         ],
         model: 'mistralai/Mixtral-8x7B-Instruct-v0.1',
-        response_model: { schema: NoteSchema, name: 'SummarizeNotes' },
+        response_model: { schema: NoteSchema, name: 'VetReportFromNote' },
         max_tokens: 3000,
         temperature: 0.6,
         max_retries: 3,
       });
-      const { title, summary, actionItems } = extract;
+      const { title, vetReport, actionItems } = extract;
 
-      await ctx.runMutation(internal.together.saveSummary, {
+      await ctx.runMutation(internal.together.saveVetReport, {
         id: args.id,
-        summary,
+        vetReport,
         actionItems,
         title,
       });
     } catch (e) {
       console.error('Error extracting from voice message', e);
-      await ctx.runMutation(internal.together.saveSummary, {
+      await ctx.runMutation(internal.together.saveVetReport, {
         id: args.id,
-        summary: 'Summary failed to generate',
+        vetReport: 'vetReport failed to generate',
         actionItems: [],
         title: 'Title',
       });
@@ -95,17 +95,17 @@ export const getTranscript = internalQuery({
   },
 });
 
-export const saveSummary = internalMutation({
+export const saveVetReport = internalMutation({
   args: {
     id: v.id('notes'),
-    summary: v.string(),
+    vetReport: v.string(),
     title: v.string(),
     actionItems: v.array(v.string()),
   },
   handler: async (ctx, args) => {
-    const { id, summary, actionItems, title } = args;
+    const { id, vetReport, actionItems, title } = args;
     await ctx.db.patch(id, {
-      summary: summary,
+      summary: vetReport,
       title: title,
       generatingTitle: false,
     });
