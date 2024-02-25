@@ -17,7 +17,7 @@ export default async function Header() {
             className="h-5 w-5 md:h-8 md:w-8"
           />
           <h1 className="text-xl font-medium text-[#25292F] md:text-3xl">
-            NotesGPT
+            Vet Notes GPT
           </h1>
         </Link>
         {/* buttons */}
@@ -28,13 +28,13 @@ export default async function Header() {
                 href={'/dashboard'}
                 className="hidden cursor-pointer text-lg text-dark md:inline-block lg:text-xl"
               >
-                Recordings
+                Grabaciones
               </Link>
               <Link
                 href={'/dashboard/action-items'}
                 className="hidden cursor-pointer text-lg text-dark md:inline-block lg:text-xl"
               >
-                Action Items
+                Tareas
               </Link>
               <UserNav
                 image={user.imageUrl}
@@ -49,7 +49,7 @@ export default async function Header() {
           ) : (
             <Link href="/dashboard">
               <button className="text-md primary-gradient primary-shadow rounded-lg px-5 py-1 text-center text-light md:px-10 md:py-2 md:text-xl">
-                Sign in
+                Entrar
               </button>
             </Link>
           )}

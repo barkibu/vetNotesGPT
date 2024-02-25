@@ -39,7 +39,7 @@ export default function RecordingDesktop({
             generatingTitle && 'animate-pulse'
           }`}
         >
-          {generatingTitle ? 'Generating Title...' : title ?? 'Untitled Note'}
+          {generatingTitle ? 'Generando título...' : title ?? 'Nota sin título'}
         </h1>
         <div className="flex items-center justify-center">
           <p className="text-lg opacity-80">
@@ -55,7 +55,7 @@ export default function RecordingDesktop({
                 originalIsOpen ? 'opacity-100' : 'opacity-40'
               } transition-all duration-300`}
             >
-              Transcript
+              Transcripción
             </button>
             <div
               onClick={() => setOriginalIsOpen(!originalIsOpen)}
@@ -72,13 +72,13 @@ export default function RecordingDesktop({
                 !originalIsOpen ? 'opacity-100' : 'opacity-40'
               } transition-all duration-300`}
             >
-              Summary
+              Informe Veterinario
             </button>
           </div>
         </div>
         <div className="text-center">
           <h1 className="text-xl leading-[114.3%] tracking-[-0.75px] text-dark lg:text-2xl xl:text-[30px]">
-            Action Items
+            Tareas
           </h1>
         </div>
       </div>
@@ -136,7 +136,7 @@ export default function RecordingDesktop({
                           onChange={(e) => {
                             if (e.target.checked) {
                               removeActionItem(item._id);
-                              toast.success('1 task completed.');
+                              toast.success('1 tarea completada.');
                             }
                           }}
                           type="checkbox"
@@ -160,7 +160,7 @@ export default function RecordingDesktop({
               style={{ boxShadow: ' 0px 4px 4px 0px rgba(0, 0, 0, 0.25)' }}
               href="/dashboard/action-items"
             >
-              View All Action Items
+              Ver todas las tareas
             </Link>
           </div>
         </div>

@@ -46,7 +46,7 @@ export default function DashboardHomePage({
     <div suppressHydrationWarning={true} className="mt-5 min-h-[100vh] w-full">
       <div className=" w-full py-[23px] md:py-4 lg:py-[25px]">
         <h1 className="text-center text-2xl font-medium text-dark md:text-4xl">
-          Your Voice Notes
+          Tus notas de voz
         </h1>
       </div>
       {/* search bar */}
@@ -61,7 +61,7 @@ export default function DashboardHomePage({
         <form onSubmit={handleSearch}>
           <input
             type="text"
-            placeholder="Search"
+            placeholder="Buscar en tus notas"
             onChange={(e) => setSearchQuery(e.target.value)}
             value={searchQuery}
             className="w-full text-[16px] outline-none md:text-xl"
@@ -77,7 +77,7 @@ export default function DashboardHomePage({
         {finalNotes.length === 0 && (
           <div className="flex h-[50vh] w-full items-center justify-center">
             <p className="text-center text-2xl text-dark">
-              You currently have no <br /> recordings.
+              No tienes ninguna <br /> grabación.
             </p>
           </div>
         )}
@@ -90,7 +90,7 @@ export default function DashboardHomePage({
             style={{ boxShadow: ' 0px 4px 4px 0px rgba(0, 0, 0, 0.25)' }}
             href="/record"
           >
-            Record a New Voice Note
+            Graba una nueva nota de voz
           </Link>
           {allNotes && (
             <Link
@@ -98,7 +98,7 @@ export default function DashboardHomePage({
               style={{ boxShadow: ' 0px 4px 4px 0px rgba(0, 0, 0, 0.25)' }}
               href="/dashboard/action-items"
             >
-              View Action Items
+              Ver tareas
             </Link>
           )}
         </div>

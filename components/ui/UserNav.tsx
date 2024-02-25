@@ -58,7 +58,7 @@ export function UserNav({
           className="hover:cursor-pointer hover:bg-gray-200"
         >
           <LogOut className="mr-2 h-4 w-4 text-black" />
-          <span className="text-black">Log out</span>
+          <span className="text-black">Salir</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

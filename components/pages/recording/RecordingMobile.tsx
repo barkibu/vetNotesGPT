@@ -28,7 +28,7 @@ export default function RecordingMobile({
     <div className="md:hidden">
       <div className="max-width my-5 flex items-center justify-center">
         <h1 className="leading text-center text-xl font-medium leading-[114.3%] tracking-[-0.75px] text-dark md:text-[35px] lg:text-[43px]">
-          {title ?? 'Untitled Note'}
+          {title ?? 'Nota sin título'}
         </h1>
       </div>
       <div className="grid w-full grid-cols-3 ">
@@ -42,7 +42,7 @@ export default function RecordingMobile({
             transcriptOpen ? 'action-btn-active' : 'action-btn'
           }`}
         >
-          Transcript
+          Transcripción
         </button>
         <button
           onClick={() => (
@@ -54,7 +54,7 @@ export default function RecordingMobile({
             summaryOpen ? 'action-btn-active' : 'action-btn'
           }`}
         >
-          Summary
+          Informe
         </button>
         <button
           onClick={() => (
@@ -66,7 +66,7 @@ export default function RecordingMobile({
             actionItemOpen ? 'action-btn-active' : 'action-btn'
           }`}
         >
-          Action Items
+          Tareas
         </button>
       </div>
       <div className="w-full">
@@ -96,7 +96,7 @@ export default function RecordingMobile({
                           onChange={(e) => {
                             if (e.target.checked) {
                               removeActionItem(item._id);
-                              toast.success('1 task completed.');
+                              toast.success('1 tarea completada.');
                             }
                           }}
                           type="checkbox"
@@ -122,7 +122,7 @@ export default function RecordingMobile({
                   }}
                   href="/dashboard/action-items"
                 >
-                  View All Action Items
+                  Ver todas las tareas
                 </Link>
               </div>
             </div>{' '}

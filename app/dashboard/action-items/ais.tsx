@@ -24,11 +24,11 @@ export default function ActionItemsPage({
       <div className="flex-col items-center justify-center text-center md:flex">
         <div className="w-full pb-1 pt-4">
           <h1 className="text-center text-2xl font-medium text-dark md:text-4xl">
-            Action Items
+            Tareas
           </h1>
         </div>
         <h3 className="mt-3 text-gray-600 md:text-xl">
-          {actionItems?.length ? actionItems?.length : 0} tasks
+          {actionItems?.length ? actionItems?.length : 0} tareas
         </h3>
       </div>
       <div className="mx-auto mt-[27px] w-full max-w-[900px] px-5 md:mt-[45px]">
@@ -44,7 +44,7 @@ export default function ActionItemsPage({
                     onChange={(e) => {
                       if (e.target.checked) {
                         removeActionItem(item._id);
-                        toast.success('1 task completed.');
+                        toast.success('1 tarea completada.');
                       }
                     }}
                     type="checkbox"
@@ -58,7 +58,7 @@ export default function ActionItemsPage({
                     {new Date(item?._creationTime).toLocaleDateString()}
                   </p>
                   <p className="truncate text-[15px] font-[300] leading-[249%] tracking-[-0.6px] text-dark opacity-60 md:inline-block md:text-xl lg:text-xl">
-                    From: {item?.title}
+                    De: {item?.title}
                   </p>
                 </div>
               </div>
@@ -69,14 +69,14 @@ export default function ActionItemsPage({
           <div className="flex flex-col items-center justify-center">
             <div className="flex h-[50vh] w-full flex-col items-center justify-center gap-7">
               <p className="text-center text-2xl text-dark">
-                You currently have no action items.
+                No tienes tareas pendientes.
               </p>
               <Link
                 className="rounded-[7px] bg-dark px-[37px] py-[15px] text-[17px] leading-[79%] tracking-[-0.75px] text-light md:text-2xl"
                 style={{ boxShadow: ' 0px 4px 4px 0px rgba(0, 0, 0, 0.25)' }}
                 href="/record"
               >
-                Record your first voice note
+                Graba tu primera nota de voz.
               </Link>
             </div>
           </div>

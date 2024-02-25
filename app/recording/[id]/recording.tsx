@@ -17,7 +17,7 @@ export default function RecordingPage({
     <div className="mx-auto max-w-[1500px]">
       {currentNote.note === null ? (
         <div className="mt-10 text-center">
-          <h1 className="text-4xl">Note not found</h1>
+          <h1 className="text-4xl">Nota no encontrada</h1>
         </div>
       ) : (
         <>

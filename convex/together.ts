@@ -27,17 +27,16 @@ const client = Instructor({
 const NoteSchema = z.object({
   title: z
     .string()
-    .describe('Short descriptive title of what the voice message is about'),
+    .describe('Short descriptive title in spanish of what the voice message is about'),
   summary: z
     .string()
     .describe(
-      'A short summary in the first person point of view of the person recording the voice message',
-    )
-    .max(500),
+      'Detailed standard veterinary report that can be provided to a pet insurance company. In spanish.',
+    ),
   actionItems: z
     .array(z.string())
     .describe(
-      'A list of action items from the voice note, short and to the point. Make sure all action item lists are fully resolved if they are nested',
+      'A list of action items in spanish from the voice note, short and to the point. Make sure all action item lists are fully resolved if they are nested',
     ),
 });
 
@@ -55,13 +54,13 @@ export const chat = internalAction({
           {
             role: 'system',
             content:
-              'The following is a transcript of a voice message. Extract a title, summary, and action items from it and answer in JSON in this format: {title: string, summary: string, actionItems: [string, string, ...]}',
+              'The following is a transcript of a voice message from a pet health related conversation. The message was created by an expert Veterinarian. Extract in spanish a title, summary (the summary must follow an standard veterinary report that can be provided to a pet insurance company), and action items from it and answer in JSON in this format: {title: string, summary: string, actionItems: [string, string, ...]}',
           },
           { role: 'user', content: transcript },
         ],
         model: 'mistralai/Mixtral-8x7B-Instruct-v0.1',
         response_model: { schema: NoteSchema, name: 'SummarizeNotes' },
-        max_tokens: 1000,
+        max_tokens: 3000,
         temperature: 0.6,
         max_retries: 3,
       });
